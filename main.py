@@ -15,7 +15,8 @@ class Band(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     hometown = Column(String)
-
+    
+    #Relationships
     concerts = relationship('Concert', back_populates='band')
 
     def __repr__(self):
@@ -23,7 +24,7 @@ class Band(Base):
                 +f"Band Name :{self.name}"\
                 +f"Hometown: {self.hometown}"
   
-    
+    #Methods
     def band_concerts(self):
         return self.concerts
     
@@ -50,6 +51,7 @@ class Venue(Base):
     title = Column(String)
     city = Column(String)
 
+    #Relationships
     concerts = relationship('Concert', back_populates='venue')
     
     def __repr__(self):
@@ -57,6 +59,7 @@ class Venue(Base):
             +f"Venue Name: {self.title}"\
                 +f"city: {self.city}" 
 
+    #Methods
     def venue_concerts(self):
         return self.concerts
 
@@ -79,6 +82,7 @@ class Concert(Base):
     venue_id = Column(Integer, ForeignKey('venues.id'))
     date = Column(String)
 
+    #Relationships
     band = relationship('Band', back_populates='concerts')
     venue = relationship('Venue', back_populates='concerts')
     
@@ -88,6 +92,8 @@ class Concert(Base):
                 +f"Venue id: {self.venue_id}"\
                 +f"date:{self.date}"
 
+    
+    #Methods
     def concert_band(self):
         return self.band 
 
@@ -107,3 +113,9 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+# Linkin_Park = Band(name="Linkin Park ", hometown="Thika")
+# KICC = Venue(title="KICC", city="Nairobi")
+# TSO = Concert(band=Linkin_Park, venue=KICC, date="2024-09-17")
+
+# session.add_all([Linkin_Park, KICC, TSO])
+# session.commit()
