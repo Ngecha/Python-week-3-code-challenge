@@ -27,7 +27,7 @@ class Band(Base):
     def band_concerts(self):
         return self.concerts
     
-    def venues(self):
+    def band_venues(self):
         return list(set([concert.venue for concert in self.concerts]))
 
     def play_in_venue(self, venue, date):

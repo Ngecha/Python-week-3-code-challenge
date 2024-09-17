@@ -25,42 +25,6 @@ Class and Instance Methods
 SQLAlchemy Querying
  
 
-What You Should Have:
- Your schema should look like this:
- 
-
-Bands Table
-
-Column
-
-Type
-
-name
-
-String
-
-hometown
-
-String
-
- 
-
-venues Table
-
-Column
-
-Type
-
-title
-
-String
-
-city
-
-String
-
- 
-
 You will need to create a schema for the concerts table using the attributes specified in the deliverables below. 
 
 You will also need to create the migrations for the above tables using the attributes specified in the deliverables below
